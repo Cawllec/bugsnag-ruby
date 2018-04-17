@@ -82,3 +82,7 @@ Then("I output the logs for container {string}") do |container|
     pp line
   end
 end
+
+When("I run the service {string} with the custom command {string}") do |service, command|
+  run_docker_compose_command($docker_compose_file, "run #{service} #{command}")
+end
