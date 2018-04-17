@@ -20,6 +20,7 @@ Scenario Outline: Metadata can be added to a report using add_tab
   And the event "metaData.additional_metadata.bar.0" is "b"
   And the event "metaData.additional_metadata.bar.1" is "a"
   And the event "metaData.additional_metadata.bar.2" is "r"
+  And I output the logs for container "plain-ruby"
 
   Examples:
   | ruby version | initiator               |

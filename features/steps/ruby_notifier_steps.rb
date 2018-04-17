@@ -1,5 +1,6 @@
 require 'net/http'
 require 'open3'
+require 'pp'
 
 When("I configure the bugsnag endpoint") do
   steps %Q{
@@ -72,4 +73,12 @@ Then("the event {string} is {string}") do |key, value|
   steps %Q{
     Then the event "#{key}" equals "#{value}"
   }
+end
+
+Then("I output the logs for container {string}") do |container|
+  d_id = run_command("docker ps -qa").first
+  log = run_command("docker logs #{d_id}")
+  log.each do |line|
+    pp line
+  end
 end
