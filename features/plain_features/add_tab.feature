@@ -10,8 +10,9 @@ Scenario Outline: Metadata can be added to a report using add_tab
   Given I set environment variable "RUBY_VERSION" to "<ruby version>"
   And I set environment variable "CALLBACK_INITIATOR" to "<initiator>"
   And I have built the service "plain-ruby"
-  And I run the service "plain-ruby" with the command "bundle exec ruby report_modification/add_tab.rb"
-  And I wait for 1 second
+  And I run the service "plain-ruby" with the custom command "bundle exec ruby report_modification/add_tab.rb"
+  And I wait for 5 second
+  And I output the logs for container "plain-ruby"
   Then I should receive a request
   And the request used the Ruby notifier
   And the request used payload v4 headers
