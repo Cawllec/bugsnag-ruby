@@ -12,6 +12,7 @@ Scenario Outline: Metadata can be added to a report using add_tab
   And I have built the service "plain-ruby"
   And I run the service "plain-ruby" with the command "bundle exec ruby report_modification/add_tab.rb"
   And I wait for 1 second
+  And I output the logs for container "plain-ruby"
   Then I should receive a request
   And the request used the Ruby notifier
   And the request used payload v4 headers
@@ -20,7 +21,6 @@ Scenario Outline: Metadata can be added to a report using add_tab
   And the event "metaData.additional_metadata.bar.0" is "b"
   And the event "metaData.additional_metadata.bar.1" is "a"
   And the event "metaData.additional_metadata.bar.2" is "r"
-  And I output the logs for container "plain-ruby"
 
   Examples:
   | ruby version | initiator               |
